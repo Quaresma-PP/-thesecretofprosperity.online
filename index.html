@@ -71,13 +71,15 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
      </picture>
      Desktop 1200x260 · Mobile 800x420 -->
 <div class="banner">
-  <div class="ph ph--banner">BANNER TOPO<br>desktop 1200&times;260 &nbsp;·&nbsp; mobile 800&times;420</div>
+  <picture>
+    <source media="(max-width:640px)" srcset="/img/banner-mobile.jpg">
+    <img src="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg" alt="The Secret of Masonic Prosperity">
+  </picture>
 </div>
 
 <div class="wrap">
   <div class="product">
-    <!-- Substitua por: <img src="/img/product-thumb.webp" alt="..."> — 112x112 -->
-    <div class="product__thumb">IMG<br>112&times;112</div>
+    <div class="product__thumb"><img src="/img/download (1).png" alt="The Secret of Masonic Prosperity"></div>
     <div class="product__info">
       <div class="product__name" id="p-name"></div>
       <div class="product__price" id="p-price"></div>
@@ -102,7 +104,7 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 </div>
 
 <div class="banner banner--bottom">
-  <div class="ph ph--bottom">BANNER RODAPÉ<br>900&times;1200 (vertical)</div>
+  <img src="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg" alt="">
 </div>
 
 <script>
@@ -113,9 +115,9 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
    ===================================================================== */
 const CONFIG = {
   // Troque pela sua chave publicável de TESTE (pk_test_...)
-  publishableKey: 'pk_test_TROQUE_AQUI',
+  publishableKey: 'pk_test_51IQuWxHzghNseMwmzPrwRkP3M2LjgYCHovtNQNXeJjgUVk007SvGMmnkESd85AocCmN50KokuPCA1KQRPH6AE9Rn00Qz0yPJY0',
 
-  // URL da função no Supabase (troque SEU_PROJECT_REF pelo ref do projeto)
+  // URL da função no Supabase (troque adaicbrfpxodasroosxx pelo ref do projeto)
   sessionUrl: 'https://adaicbrfpxodasroosxx.supabase.co/functions/v1/create-checkout-session',
 
   offer: 'masonic_prosperity',
