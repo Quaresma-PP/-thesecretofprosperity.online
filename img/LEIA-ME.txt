@@ -1,0 +1,1 @@
+Coloque aqui: banner-desktop.webp (1200x260), banner-mobile.webp (800x420), product-thumb.webp (112x112), banner-bottom.webp (900x1200)
