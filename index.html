@@ -56,6 +56,7 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 
 .legal{max-width:520px;margin:20px auto 0;text-align:center;font-size:13px;line-height:1.6;color:var(--ink-soft)}
 .legal a{color:var(--ink)}
+.legal--footer{padding:0 16px 48px}
 
 /* foto do produto sozinha, centralizada */
 .product--photo-only{justify-content:center;padding:20px 16px}
@@ -108,12 +109,6 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
   </div>
 
   <div class="alert" id="alert" role="alert"></div>
-
-  <p class="legal">
-    By completing this purchase you agree to our
-    <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.<br>
-    <span id="refund"></span>
-  </p>
 </div>
 
 <!-- ===== DEPOIMENTOS =====
@@ -126,7 +121,7 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 
   <div class="review">
     <div class="review__head">
-      <div class="review__avatar"><img src="/img/image1.webp" alt=""></div>
+      <div class="review__avatar"><img src="/img/review-1.jpg" alt=""></div>
       <div class="review__meta">
         <div class="review__name">Michael R. <span class="review__verified">Verified</span></div>
         <div class="review__stars">★★★★★</div>
@@ -137,9 +132,9 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 
   <div class="review">
     <div class="review__head">
-      <div class="review__avatar"><img src="/img/image2.webp" alt=""></div>
+      <div class="review__avatar"><img src="/img/review-2.jpg" alt=""></div>
       <div class="review__meta">
-        <div class="review__name">Emma T. <span class="review__verified">Verified</span></div>
+        <div class="review__name">David T. <span class="review__verified">Verified</span></div>
         <div class="review__stars">★★★★★</div>
       </div>
     </div>
@@ -148,7 +143,7 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 
   <div class="review">
     <div class="review__head">
-      <div class="review__avatar"><img src="/img/image3.jpg" alt=""></div>
+      <div class="review__avatar"><img src="/img/review-3.jpg" alt=""></div>
       <div class="review__meta">
         <div class="review__name">James K. <span class="review__verified">Verified</span></div>
         <div class="review__stars">★★★★★</div>
@@ -165,6 +160,13 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
   <img src="/img/guarantee.png" alt="30-day money-back guarantee">
   <p class="guarantee__text">30-Day Money-Back Guarantee — if you're not satisfied, we refund you. No questions asked.</p>
 </div>
+
+<p class="legal legal--footer">
+  By completing this purchase you agree to our
+  <a href="https://stripe.com/legal/consumer" target="_blank" rel="noopener">Terms of Use</a> and
+  <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.<br>
+  <span id="refund"></span>
+</p>
 
 <script>
 /* =====================================================================
