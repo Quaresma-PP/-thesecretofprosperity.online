@@ -15,7 +15,281 @@
   --navy:#0a1b3d; --gold:#c9a227; --cream:#fdf6e3; --card:#fff;
   --ink:#1c2434; --ink-soft:#6b7280; --line:#e4e2dc; --r:10px;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Checkout — The Secret of Masonic Prosperity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+:root{
+  --navy:#0a1b3d; --gold:#c9a227; --cream:#fdf6e3; --card:#fff;
+  --ink:#1c2434; --ink-soft:#6b7280; --line:#e4e2dc; --r:10px;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{max-width:100%;height:auto;display:block}
+body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+
+.topbar{background:var(--gold);color:var(--navy);text-align:center;padding:12px 16px;font-size:15px;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+
+.banner{max-width:900px;margin:0 auto;padding:16px 16px 0}
+.banner--bottom{padding:32px 16px}
+.banner img{width:100%;border-radius:var(--r)}
+.ph{width:100%;border:2px dashed var(--gold);border-radius:var(--r);background:rgba(201,162,39,.07);
+    display:grid;place-items:center;color:#8a7320;font-size:13px;font-weight:600;text-align:center;padding:16px}
+.ph--banner{aspect-ratio:1200/260}
+.ph--bottom{aspect-ratio:900/1200}
+@media(max-width:640px){.ph--banner{aspect-ratio:800/420}}
+
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+
+.product{display:flex;align-items:center;gap:12px;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--r) var(--r) 0 0;border-bottom:0;padding:16px}
+.product__thumb{width:56px;height:56px;flex:0 0 56px;border-radius:8px;overflow:hidden;
+  border:2px dashed var(--gold);background:rgba(201,162,39,.07);
+  display:grid;place-items:center;font-size:9px;font-weight:700;color:#8a7320;text-align:center;line-height:1.1}
+.product__thumb img{width:100%;height:100%;object-fit:cover}
+.product__info{flex:1;min-width:0}
+.product__name{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:700;line-height:1.2}
+.product__price{color:var(--ink-soft);font-size:15px;margin-top:2px}
+
+.checkout-box{background:var(--card);border:1px solid var(--line);
+  border-radius:0 0 var(--r) var(--r);padding:16px;min-height:420px}
+@media(max-width:640px){.checkout-box{padding:12px}}
+
+.loading{display:grid;place-items:center;min-height:380px;gap:12px;color:var(--ink-soft);font-size:14px}
+.spinner{width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.alert{display:none;margin:16px;background:#fdecea;border:1px solid #f5c6c2;border-radius:8px;
+       padding:14px 16px;color:#b3261e;font-size:14px;line-height:1.5}
+.alert.show{display:block}
+
+.legal{max-width:520px;margin:20px auto 0;text-align:center;font-size:13px;line-height:1.6;color:var(--ink-soft)}
+.legal a{color:var(--ink)}
+
+/* foto do produto sozinha, centralizada */
+.product--photo-only{justify-content:center;padding:20px 16px}
+.product--photo-only .product__thumb{width:72px;height:72px;flex-basis:72px;border:0}
+
+/* ===== depoimentos ===== */
+.reviews{max-width:640px;margin:8px auto 0;padding:16px}
+.reviews__title{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;
+  font-weight:700;color:var(--navy);text-align:center;margin-bottom:6px}
+.reviews__sub{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:24px}
+.reviews__stars-top{color:var(--gold);font-size:20px;letter-spacing:2px;text-align:center;margin-bottom:4px}
+.review{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;margin-bottom:14px}
+.review__head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.review__avatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;overflow:hidden;background:var(--field)}
+.review__avatar img{width:100%;height:100%;object-fit:cover}
+.review__meta{flex:1;min-width:0}
+.review__name{font-weight:700;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:6px}
+.review__verified{font-size:11px;font-weight:600;color:var(--go);
+  background:rgba(31,157,77,.1);padding:2px 7px;border-radius:20px}
+.review__stars{color:var(--gold);font-size:14px;letter-spacing:1px;margin-top:2px}
+.review__text{font-size:14.5px;line-height:1.6;color:var(--ink)}
+
+/* ===== selo de garantia ===== */
+.guarantee{max-width:520px;margin:0 auto;padding:24px 16px 40px;text-align:center}
+.guarantee img{width:150px;height:auto;margin:0 auto 14px;display:block}
+.guarantee__text{font-size:14px;line-height:1.6;color:var(--ink-soft);max-width:400px;margin:0 auto}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar"></div>
+
+<div class="banner">
+  <picture>
+    <source media="(max-width:640px)" srcset="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg">
+    <img src="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg" alt="The Secret of Masonic Prosperity">
+  </picture>
+</div>
+
+<div class="wrap">
+
+  <div class="checkout-box">
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <span>Loading secure checkout…</span>
+    </div>
+    <div id="checkout"></div>
+  </div>
+
+  <div class="alert" id="alert" role="alert"></div>
+
+  <p class="legal">
+    By completing this purchase you agree to our
+    <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>.<br>
+    <span id="refund"></span>
+  </p>
+</div>
+
+<!-- ===== DEPOIMENTOS =====
+     Troque os textos, nomes e as fotos (/img/review-1.jpg etc).
+     Fotos dos avatares: quadradas, ~120x120, viram círculo automático. -->
+<section class="reviews">
+  <div class="reviews__stars-top">★★★★★</div>
+  <h2 class="reviews__title">What readers are saying</h2>
+  <p class="reviews__sub">Join thousands who started their journey</p>
+
+  <div class="review">
+    <div class="review__head">
+      <div class="review__avatar"><img src="/img/image1.webp" alt=""></div>
+      <div class="review__meta">
+        <div class="review__name">Michael R. <span class="review__verified">Verified</span></div>
+        <div class="review__stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review__text">This completely shifted how I think about wealth and discipline. Worth every penny — I only wish I'd found it sooner.</p>
+  </div>
+
+  <div class="review">
+    <div class="review__head">
+      <div class="review__avatar"><img src="/img/image2.webp" alt=""></div>
+      <div class="review__meta">
+        <div class="review__name">Emma T. <span class="review__verified">Verified</span></div>
+        <div class="review__stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review__text">Clear, practical and genuinely eye-opening. The instant access made it easy to start reading right away.</p>
+  </div>
+
+  <div class="review">
+    <div class="review__head">
+      <div class="review__avatar"><img src="/img/image3.jpg" alt=""></div>
+      <div class="review__meta">
+        <div class="review__name">James K. <span class="review__verified">Verified</span></div>
+        <div class="review__stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review__text">A powerful read. I've recommended it to several friends already. Delivery was instant and the content delivered.</p>
+  </div>
+</section>
+
+<div class="banner banner--bottom">
+  <img src="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg" alt="">
+</div>
+
+<!-- ===== SELO DE GARANTIA =====
+     Coloque a imagem do selo aqui. Sugestão de tamanho: 200x200.
+     Troque /img/guarantee.png pelo nome do seu arquivo. -->
+<div class="guarantee">
+  <img src="/img/guarantee.png" alt="30-day money-back guarantee">
+  <p class="guarantee__text">30-Day Money-Back Guarantee — if you're not satisfied, we refund you. No questions asked.</p>
+</div>
+
+<script>
+/* =====================================================================
+   CONFIG — o único bloco que você edita.
+   A chave publicável (pk_) PODE ficar aqui: ela é pública por design.
+   A chave SECRETA (sk_) nunca entra aqui — ela mora só no Supabase.
+   ===================================================================== */
+const CONFIG = {
+  // Troque pela sua chave publicável de TESTE (pk_test_...)
+  publishableKey: 'pk_test_51IQuWxHzghNseMwmzPrwRkP3M2LjgYCHovtNQNXeJjgUVk007SvGMmnkESd85AocCmN50KokuPCA1KQRPH6AE9Rn00Qz0yPJY0',
+
+  // URL da função no Supabase (troque adaicbrfpxodasroosxx pelo ref do projeto)
+  sessionUrl: 'https://adaicbrfpxodasroosxx.supabase.co/functions/v1/create-checkout-session',
+
+  offer: 'masonic_prosperity',
+
+  productName: 'The Secret of Masonic Prosperity',
+  priceLabel : '$37.00 — one-time payment',
+
+  // Contador regressivo na barra do topo.
+  // countdownSeconds: tempo inicial (07:39 = 459 segundos).
+  // O contador é por-visitante: continua de onde parou se a pessoa recarregar,
+  // e some quando zera. Isso é mais honesto (e mais seguro) que reiniciar sempre.
+  countdownSeconds: 459,
+  countdownLabel  : 'Special price ends in',
+  countdownEnded  : 'Offer still available — secure your copy now',
+
+  refundNote: '30-day refund policy.'
+};
+
+/* ---------- Contador regressivo (por-visitante) ---------- */
+(function(){
+  const bar = document.getElementById('topbar');
+  const KEY = 'mp_deadline_v1';
+  let deadline = Number(localStorage.getItem(KEY));
+  const now = Date.now();
+  // Primeira visita (ou valor inválido): cria a deadline a partir de agora.
+  if (!deadline || deadline < now || deadline > now + CONFIG.countdownSeconds*1000) {
+    deadline = now + CONFIG.countdownSeconds * 1000;
+    try { localStorage.setItem(KEY, String(deadline)); } catch(e){}
+  }
+  function tick(){
+    const left = Math.max(0, Math.floor((deadline - Date.now())/1000));
+    if (left <= 0){
+      bar.textContent = CONFIG.countdownEnded;
+      clearInterval(timer);
+      return;
+    }
+    const m = String(Math.floor(left/60)).padStart(2,'0');
+    const s = String(left%60).padStart(2,'0');
+    bar.textContent = `${CONFIG.countdownLabel}  ${m}:${s}`;
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
+document.getElementById('refund').textContent  = CONFIG.refundNote;
+
+const $alert = document.getElementById('alert');
+function fail(msg){
+  document.getElementById('loading').style.display = 'none';
+  $alert.textContent = msg;
+  $alert.classList.add('show');
+}
+
+const q = new URLSearchParams(location.search);
+const pick = k => q.get(k) || undefined;
+
+const stripe = Stripe(CONFIG.publishableKey);
+
+async function fetchClientSecret(){
+  const res = await fetch(CONFIG.sessionUrl, {
+    method : 'POST',
+    headers: { 'Content-Type':'application/json' },
+    body   : JSON.stringify({
+      offer       : CONFIG.offer,
+      utm_source  : pick('utm_source'),
+      utm_medium  : pick('utm_medium'),
+      utm_campaign: pick('utm_campaign'),
+      utm_content : pick('utm_content'),
+      utm_term    : pick('utm_term'),
+      fbclid      : pick('fbclid'),
+      click_id    : pick('cid') || pick('click_id')
+    })
+  });
+  const data = await res.json();
+  if (!res.ok || !data.clientSecret) throw new Error(data.error || 'no_client_secret');
+  return data.clientSecret;
+}
+
+(async () => {
+  try {
+    const checkout = await stripe.initEmbeddedCheckout({ fetchClientSecret });
+    checkout.mount('#checkout');
+    document.getElementById('loading').style.display = 'none';
+    if (window.fbq) fbq('track', 'InitiateCheckout');
+  } catch (err) {
+    console.error(err);
+    fail('We could not load the checkout. Please refresh the page or try again in a moment.');
+  }
+})();
+</script>
+</body>
+</html>
 img{max-width:100%;height:auto;display:block}
 body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 
