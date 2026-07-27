@@ -19,7 +19,7 @@
 img{max-width:100%;height:auto;display:block}
 body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 
-.topbar{background:var(--gold);color:var(--navy);text-align:center;padding:12px 16px;font-size:14px;font-weight:600}
+.topbar{background:var(--gold);color:var(--navy);text-align:center;padding:12px 16px;font-size:15px;font-weight:700;letter-spacing:.01em;font-variant-numeric:tabular-nums}
 
 .banner{max-width:900px;margin:0 auto;padding:16px 16px 0}
 .banner--bottom{padding:32px 16px}
@@ -56,6 +56,28 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 
 .legal{max-width:520px;margin:20px auto 0;text-align:center;font-size:13px;line-height:1.6;color:var(--ink-soft)}
 .legal a{color:var(--ink)}
+
+/* foto do produto sozinha, centralizada */
+.product--photo-only{justify-content:center;padding:20px 16px}
+.product--photo-only .product__thumb{width:72px;height:72px;flex-basis:72px;border:0}
+
+/* ===== depoimentos ===== */
+.reviews{max-width:640px;margin:8px auto 0;padding:16px}
+.reviews__title{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;
+  font-weight:700;color:var(--navy);text-align:center;margin-bottom:6px}
+.reviews__sub{text-align:center;color:var(--ink-soft);font-size:14px;margin-bottom:24px}
+.reviews__stars-top{color:var(--gold);font-size:20px;letter-spacing:2px;text-align:center;margin-bottom:4px}
+.review{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;margin-bottom:14px}
+.review__head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.review__avatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;overflow:hidden;background:var(--field)}
+.review__avatar img{width:100%;height:100%;object-fit:cover}
+.review__meta{flex:1;min-width:0}
+.review__name{font-weight:700;font-size:15px;color:var(--ink);display:flex;align-items:center;gap:6px}
+.review__verified{font-size:11px;font-weight:600;color:var(--go);
+  background:rgba(31,157,77,.1);padding:2px 7px;border-radius:20px}
+.review__stars{color:var(--gold);font-size:14px;letter-spacing:1px;margin-top:2px}
+.review__text{font-size:14.5px;line-height:1.6;color:var(--ink)}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important}}
 </style>
 </head>
@@ -63,13 +85,6 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 
 <div class="topbar" id="topbar"></div>
 
-<!-- ===== BANNER TOPO =====
-     Substitua a div .ph por:
-     <picture>
-       <source media="(max-width:640px)" srcset="/img/banner-mobile.webp">
-       <img src="/img/banner-desktop.webp" alt="The Secret of Masonic Prosperity">
-     </picture>
-     Desktop 1200x260 · Mobile 800x420 -->
 <div class="banner">
   <picture>
     <source media="(max-width:640px)" srcset="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg">
@@ -78,12 +93,8 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
 </div>
 
 <div class="wrap">
-  <div class="product">
+  <div class="product product--photo-only">
     <div class="product__thumb"><img src="/img/download (1).png" alt="The Secret of Masonic Prosperity"></div>
-    <div class="product__info">
-      <div class="product__name" id="p-name"></div>
-      <div class="product__price" id="p-price"></div>
-    </div>
   </div>
 
   <div class="checkout-box">
@@ -107,6 +118,48 @@ body{background:var(--cream);font-family:'Karla',system-ui,sans-serif;color:var(
   <img src="/img/Businessman_with_masonic_symbols_2K_202607262031.jpeg" alt="">
 </div>
 
+<!-- ===== DEPOIMENTOS =====
+     Troque os textos, nomes e as fotos (/img/review-1.jpg etc).
+     Fotos dos avatares: quadradas, ~120x120, viram círculo automático. -->
+<section class="reviews">
+  <div class="reviews__stars-top">★★★★★</div>
+  <h2 class="reviews__title">What readers are saying</h2>
+  <p class="reviews__sub">Join thousands who started their journey</p>
+
+  <div class="review">
+    <div class="review__head">
+      <div class="review__avatar"><img src="/img/review-1.jpg" alt=""></div>
+      <div class="review__meta">
+        <div class="review__name">Michael R. <span class="review__verified">Verified</span></div>
+        <div class="review__stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review__text">This completely shifted how I think about wealth and discipline. Worth every penny — I only wish I'd found it sooner.</p>
+  </div>
+
+  <div class="review">
+    <div class="review__head">
+      <div class="review__avatar"><img src="/img/review-2.jpg" alt=""></div>
+      <div class="review__meta">
+        <div class="review__name">David T. <span class="review__verified">Verified</span></div>
+        <div class="review__stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review__text">Clear, practical and genuinely eye-opening. The instant access made it easy to start reading right away.</p>
+  </div>
+
+  <div class="review">
+    <div class="review__head">
+      <div class="review__avatar"><img src="/img/review-3.jpg" alt=""></div>
+      <div class="review__meta">
+        <div class="review__name">James K. <span class="review__verified">Verified</span></div>
+        <div class="review__stars">★★★★★</div>
+      </div>
+    </div>
+    <p class="review__text">A powerful read. I've recommended it to several friends already. Delivery was instant and the content delivered.</p>
+  </div>
+</section>
+
 <script>
 /* =====================================================================
    CONFIG — o único bloco que você edita.
@@ -118,20 +171,50 @@ const CONFIG = {
   publishableKey: 'pk_test_51IQuWxHzghNseMwmzPrwRkP3M2LjgYCHovtNQNXeJjgUVk007SvGMmnkESd85AocCmN50KokuPCA1KQRPH6AE9Rn00Qz0yPJY0',
 
   // URL da função no Supabase (troque adaicbrfpxodasroosxx pelo ref do projeto)
-  sessionUrl: 'https://adaicbrfpxodasroosxx.supabase.co/functions/v1/create-checkout-session',
+  sessionUrl: 'pk_test_51IQuWxHzghNseMwmzPrwRkP3M2LjgYCHovtNQNXeJjgUVk007SvGMmnkESd85AocCmN50KokuPCA1KQRPH6AE9Rn00Qz0yPJY0',
 
   offer: 'masonic_prosperity',
 
   productName: 'The Secret of Masonic Prosperity',
   priceLabel : '$37.00 — one-time payment',
 
-  topbar    : 'Instant digital delivery — access sent to your email',
+  // Contador regressivo na barra do topo.
+  // countdownSeconds: tempo inicial (07:39 = 459 segundos).
+  // O contador é por-visitante: continua de onde parou se a pessoa recarregar,
+  // e some quando zera. Isso é mais honesto (e mais seguro) que reiniciar sempre.
+  countdownSeconds: 459,
+  countdownLabel  : 'Special price ends in',
+  countdownEnded  : 'Offer still available — secure your copy now',
+
   refundNote: '30-day refund policy.'
 };
 
-document.getElementById('topbar').textContent  = CONFIG.topbar;
-document.getElementById('p-name').textContent  = CONFIG.productName;
-document.getElementById('p-price').textContent = CONFIG.priceLabel;
+/* ---------- Contador regressivo (por-visitante) ---------- */
+(function(){
+  const bar = document.getElementById('topbar');
+  const KEY = 'mp_deadline_v1';
+  let deadline = Number(localStorage.getItem(KEY));
+  const now = Date.now();
+  // Primeira visita (ou valor inválido): cria a deadline a partir de agora.
+  if (!deadline || deadline < now || deadline > now + CONFIG.countdownSeconds*1000) {
+    deadline = now + CONFIG.countdownSeconds * 1000;
+    try { localStorage.setItem(KEY, String(deadline)); } catch(e){}
+  }
+  function tick(){
+    const left = Math.max(0, Math.floor((deadline - Date.now())/1000));
+    if (left <= 0){
+      bar.textContent = CONFIG.countdownEnded;
+      clearInterval(timer);
+      return;
+    }
+    const m = String(Math.floor(left/60)).padStart(2,'0');
+    const s = String(left%60).padStart(2,'0');
+    bar.textContent = `${CONFIG.countdownLabel}  ${m}:${s}`;
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+})();
+
 document.getElementById('refund').textContent  = CONFIG.refundNote;
 
 const $alert = document.getElementById('alert');
